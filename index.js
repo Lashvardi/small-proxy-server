@@ -27,7 +27,8 @@ app.get("/proxy", async (req, res) => {
       if (preElement && preElement.textContent.trim()) {
         return JSON.parse(preElement.textContent.trim());
       } else {
-        return JSON.parse(document.body.textContent.trim());
+        // return as text
+        return document.querySelector("body").textContent;
       }
     });
 

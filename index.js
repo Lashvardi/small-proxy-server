@@ -6,8 +6,6 @@ const app = express();
 const port = 3000;
 app.use(cors()); // Add cors middleware
 
-const puppeteer = require("puppeteer");
-
 app.get("/proxy", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
@@ -46,14 +44,6 @@ app.get("/proxy", async (req, res) => {
     });
 
     const page = await browser.newPage();
-
-    // Enable cookies
-    await page.setCookie({
-      name: "your_cookie_name",
-      value: "your_cookie_value",
-      domain: "your_domain",
-      path: "your_path",
-    });
 
     const targetUrl = req.query.targetUrl;
 

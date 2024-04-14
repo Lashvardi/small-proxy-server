@@ -8,7 +8,11 @@ app.use(cors()); // Add cors middleware
 
 app.get("/proxy", async (req, res) => {
   try {
-    const browser = await puppeteer.launch();
+    // headless true
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
 
     const targetUrl = req.query.targetUrl;

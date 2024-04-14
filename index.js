@@ -6,7 +6,6 @@ const app = express();
 const port = 3000;
 app.use(cors()); // Add cors middleware
 
-
 app.get("/proxy", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
@@ -20,6 +19,7 @@ app.get("/proxy", async (req, res) => {
         "--disable-accelerated-2d-canvas",
         "--disable-gl-drawing-for-tests",
         "--disable-features=site-per-process",
+        '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
       ],
       defaultArgs: [
         "--enable-automation", // Enables automation for Chromium
@@ -47,7 +47,6 @@ app.get("/proxy", async (req, res) => {
     const page = await browser.newPage();
 
     await page.setJavaScriptEnabled(true);
-
 
     const targetUrl = req.query.targetUrl;
 

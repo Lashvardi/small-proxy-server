@@ -27,11 +27,9 @@ app.get("/proxy", async (req, res) => {
       if (preElement && preElement.textContent.trim()) {
         return JSON.parse(preElement.textContent.trim());
       } else {
-        return null;
+        return JSON.parse(document.body.textContent.trim());
       }
     });
-
-    console.log(jsonData);
 
     if (!jsonData) {
       res.status(404).send("JSON data not found on the target page");

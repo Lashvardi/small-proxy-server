@@ -23,10 +23,13 @@ app.get("/proxy", async (req, res) => {
 
     // extract JSON data from the target page
     const jsonData = await page.evaluate(() => {
+      console.log("inside evaluate");
+      console.log(jsonData);
       const preElement = document.querySelector("pre");
       if (preElement && preElement.textContent.trim()) {
         return JSON.parse(preElement.textContent.trim());
       } else {
+        console.log(jsonData);
         return null;
       }
     });

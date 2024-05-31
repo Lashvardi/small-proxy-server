@@ -19,7 +19,6 @@ app.get("/proxy", async (req, res) => {
         "--disable-accelerated-2d-canvas",
         "--disable-gl-drawing-for-tests",
         "--disable-features=site-per-process",
-        '--user-agent="Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; LGMS323 Build/KOT49I.MS32310c) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.1599.103 Mobile Safari/537.36"',
       ],
       defaultArgs: [
         "--enable-automation", // Enables automation for Chromium
